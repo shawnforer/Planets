@@ -19,4 +19,5 @@ elseif (scrap_column > player_column && ~isinf(map.grid(player_row, player_colum
     return
 end
 where = '.';
+%test
 end
