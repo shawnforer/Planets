@@ -1,4 +1,4 @@
-function [costs,paths] = dijkstra(AorV,xyCorE,SID,FID,showWaitbar)
+function [costs,paths] = dijkstra(AorV,xyCorE,SID)
 tic;
 narginchk(2,5);
 % Process inputs
