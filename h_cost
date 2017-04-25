@@ -1,0 +1,13 @@
+function [ h_value ] = h_cost(map, neighbor_row, neighbor_col, scrap_row, scrap_col, m )
+%This function determines the hueristic, which is the distance from the
+%current cell to the final cell.
+
+%cell number, not i j
+player_location = neighbor_row + (neighbor_col - 1) * m
+scrap_location = scrap_row + (scrap_col - 1) * m
+
+data = dijkstra(map_to_array(map), map_to_aray(map), player_location);
+
+h_value = data(scrap_location);
+
+end
