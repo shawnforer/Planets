@@ -11,7 +11,7 @@ data = dijkstra(map_to_array(map), map_to_array(map), player_location);
 h_value = data(scrap_location);
 
 if map.grid(player_location) ~= 0 && isfinite(map.grid(player_location))
-    h_value = h_value + map.grid(plaer_location);
+    h_value = h_value + map.grid(player_location);
 else
     return
 end
