@@ -1,16 +1,23 @@
-function [costs,paths] = dijkstra(AorV,xyCorE,SID)
-tic;
+function [costs,paths] = dijkstra2(AorV,xyCorE,SID,FID,showWaitbar)
 narginchk(2,5);
 % Process inputs
 [n,nc] = size(AorV);
 [m,mc] = size(xyCorE);
+if (nargin < 3)
+    SID = (1:n);
+elseif isempty(SID)
+    SID = (1:n);
+end
 L = length(SID);
-FID = (1:n);
+if (nargin < 4)
+    FID = (1:n);
+elseif isempty(FID)
+    FID = (1:n);
+end
 M = length(FID);
 
 E = a2e(AorV);
 cost = xyCorE;
-
 
 % Initialize output variables
 L = length(SID);
@@ -18,21 +25,22 @@ M = length(FID);
 costs = zeros(L,M);
 paths = num2cell(NaN(L,M));
 
-% Find the minimum costs and paths using Dijkstra's Algorithm
 
+% Find the minimum costs and paths using Dijkstra's Algorithm
 % Initializations
 iTable = NaN(n,1);
 minCost = Inf(n,1);
 isSettled = false(n,1);
 path = num2cell(NaN(n,1));
-I = 1;
-minCost(1) = 0;
-iTable(1) = 0;
-isSettled(1) = true;
-path(1) = {1};
-count = 0;
+I = SID;
+minCost(I) = 0;
+iTable(I) = 0;
+isSettled(I) = true;
+path(I) = {I};
+
 % Execute Dijkstra's Algorithm for this vertex
 while any(~isSettled(FID))
+    
     % Update the table
     jTable = iTable;
     iTable(I) = NaN;
@@ -74,7 +82,6 @@ paths(1,:) = path(FID);
 if L == 1 && M == 1
     paths = paths{1};
 end
-toc
 end
 
 % Convert adjacency matrix to edge list
