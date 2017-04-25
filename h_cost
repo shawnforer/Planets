@@ -6,7 +6,7 @@ function [ h_value ] = h_cost(map, neighbor_row, neighbor_col, scrap_row, scrap_
 player_location = neighbor_row + (neighbor_col - 1) * m
 scrap_location = scrap_row + (scrap_col - 1) * m
 
-data = dijkstra(map_to_array(map), map_to_aray(map), player_location);
+data = dijkstra(map_to_array(map), map_to_array(map), player_location);
 
 h_value = data(scrap_location);
 
