@@ -1,5 +1,4 @@
 function [costs,paths] = dijkstra(connections_boolean, connections_distances, start_cell, end_cell)
-narginchk(2,5);
 % Process inputs
 [num_cells,~] = size(connections_boolean);
 [~, ~] = size(connections_distances);
