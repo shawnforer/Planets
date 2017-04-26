@@ -1,0 +1,56 @@
+function [ something ] = my_ghost_avoid( ghost_initial_locaton, ghost_movement, player_inital_location )
+
+% Idea of this function is tp figure out whether player and ghost will cross
+% paths at certain time t.
+% time t is == turns, and/or g value (??)
+%
+% using initial location of ghost and its properties, determine where its
+% location is at every time t.
+%     characteristics: type, transparency
+%     type:
+%         back-and-forth
+%         chasing (not sure how to approach this yet)
+%     transparency:
+%         1: same as player(has to go around asteroids, slowed by nebula)
+%         2: has to go around asteroids
+%         3: goes through everything
+%
+%Inlude pseudocode for how to actually run this function and what other
+%functions it requires
+
+%Dimensions of map (used in later calculations)
+gridsize = size(map.grid)
+rows = gridsize(1);
+cols = gridsize(2);
+%Checks if there are ghosts present
+ghosts_present = size(map.ghosts);
+num_of_ghosts = ghosts_present(1);
+if num_of_ghosts == 0
+    %Competely exit the function
+    break
+end
+if num_of_ghosts ~= 0
+    for z = 1 : num_of_ghosts
+        %Checks the type of ghost
+        if strcmp(map.ghosts(z).type, 'backandforth') == true
+            %
+            g_loc_x = map.ghosts(z).location(1);
+            g_loc_x_next = map.ghosts(z).location(2);
+            g_loc_y = map.ghosts(z).location(3);
+            g_loc_y_next = map.ghosts(z).location(4);
+            
+            %convert to cell number, check which direction the ghost moves 
+            g_cell_num_start = g_loc_x_next + (g_loc_y_next - 1)*rows
+            
+            %Continue with checking for location at time t
+            %
+        elseif strcmp(map.ghosts(z).type, 'towardplayer') == true
+            
+        end
+    end
+end
+end
+
+%to find starting location of ghost 
+%map.ghosts(x).location
+
