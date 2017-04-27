@@ -28,12 +28,11 @@ for i = 0 : num_scrap
         end
     end
 end
-disp(distances);
-value_per_distance = values ./ distances
+value_per_distance = values ./ distances;
 value_scrap_index = find(value_per_distance(1, :) == max(value_per_distance(1, :)));
-scrap_num_value = value_scrap_index(1) - 1
+scrap_num_value = value_scrap_index(1) - 1;
 closest_scrap_index = find(distances(1, :) == min(distances(1, :)));
-scrap_number_distance = closest_scrap_index(1) - 1
+scrap_number_distance = closest_scrap_index(1) - 1;
 data2 = dijkstra(map_to_array(map), map_to_array(map), scrap_locations(scrap_num_value));
 for i = 1 : rows
     for j = 1 : columns
