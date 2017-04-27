@@ -1,0 +1,3 @@
+function [index_left] = cell_left(index, rows, columns)
+index_left = (mod(index - rows - 1, columns * rows) + 1);
+end
