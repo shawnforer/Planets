@@ -1,0 +1,22 @@
+function [ scrap_number ] = block_prioritizer( map )
+% to prioritize which block to go to: check position of block one vs. current 
+% position, make it the ninimum distance. Check through all blocks and update 
+% minimum if its smaller. 
+%the find points per move == value / total distance from location
+
+num_scraps = size(map.scraps, 1); %gives number of scraps 
+scrap_distances = zeros(2, num_scraps);
+for x = 1: num_scraps
+    [distance_from_player, ~] = wrapper(map)
+    scrap_distances(1,x) = distance_from_player;
+    scrap_distances(2,x) = x;
+end 
+min_dist = scrap_distances(1,1);
+for i = 1:num_scraps
+    if scrap_distances(1,i) < min_dist
+        min_dist = scrap_distances(i);
+        scrap_number = scrap_distances(2,i);
+    else 
+    end
+end
+end 
