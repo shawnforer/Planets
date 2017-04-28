@@ -16,12 +16,10 @@ botValue = distance_from_scrap((floor((player_location-1)/rows)) * rows + mod(pl
 rightValue = distance_from_scrap((mod(player_location + rows - 1, columns * rows) + 1));
 leftValue = distance_from_scrap((mod(player_location-rows-1, columns * rows)+1));
 distances = [topValue, botValue, rightValue, leftValue];
-%added in by shawn
-%tells you if there are ghosts present, and how many
-
+%tells you if there are ghosts present in the map. If not, continue with this loop. If ghosts 
+%are present, skip down to following section. 
 num_of_ghosts = size(map.ghosts(), 1);
-%run through loop to check ghosts location vs. your location
-%if the same, dont move in that direction
+%calulates the shortest distance to the closest scrap and moves there. 
 if(num_of_ghosts == 0 || min(distances) == 0)
     if (topValue == min(distances))
         where = 'U';
@@ -40,6 +38,9 @@ if(num_of_ghosts == 0 || min(distances) == 0)
         return
     end
 end
+%This section decides the player's moves accordingly with ghosts present. 
+%run through loop to check ghosts location vs. your location
+%if the same, dont move in that direction
 
 contenders = distances .* (distances == min(distances));
 disp(contenders);
