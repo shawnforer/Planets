@@ -1,3 +1,5 @@
 function [index_left] = cell_left(index, rows, columns)
+%This function takes the linear index of your current cell, and size of the map (rows, columns), 
+%and retuns the linear index of the cell directly to the left of the original. 
 index_left = (mod(index - rows - 1, columns * rows) + 1);
 end
